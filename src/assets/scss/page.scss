@@ -1,0 +1,343 @@
+.accordion-item {
+    display: none;
+}
+.breadcrumb-color {
+    color: $coffee-color !important;
+}
+.breadcrumb-item.active {
+    color: white;
+}
+.breadcrumb-text-color a {
+    color: rgba(255, 255, 255, .7) !important
+}
+.list li:hover {
+    background-color: $gray-color;
+}
+.list-group-item.active {
+    background-color: $coffee-color !important;
+    border-color: $coffee-color !important;
+}
+.product-box {
+    padding: 0;
+    transition: 0.3s;
+    &:hover {
+        cursor: pointer;
+    }
+}
+.product-box:hover {
+    transform: translateY(-10px);
+}
+.card-item {
+    position: relative;
+    max-width: 95%;
+}
+.fa-item {
+    position: absolute;
+    font-size: 28px !important;
+    top: 15px;
+    right: 10px;
+    color: red;
+    z-index: 1;
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: -7px;
+        right: -1px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(236, 236, 236, 0.7);
+        z-index: -1;
+    }
+    &:hover::after {
+        background-color: rgba(236, 236, 236, 1);
+    }
+}
+.product-text {
+    font-size: 18px;
+    color: red;
+    font-weight: bolder;
+}
+.product-card {
+    a {
+        cursor: pointer;
+        opacity: 0.7;
+    }
+    a:hover {
+        opacity: 1;
+    }
+}
+.product-img {
+    position: relative;
+    height: 180px;
+    background-size: cover;
+    background-position: center center;
+}
+.product-select {
+    height: 25px;
+    width: 32px;
+}
+.more-border {
+    border-right: 1px solid gray;
+}
+.soldout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(222, 222, 222, 0.7);
+}
+.soldoutBtn {
+    font-size: 28px !important;
+}
+.soldoutBtn:hover {
+    cursor: no-drop;
+}
+.views {
+    color: #835050;
+    cursor: pointer;
+}
+.bg-item {
+    max-width: 100%;
+}
+.bg-carousel {
+    max-width: 100%;
+}
+.breadcrumb-text-color a {
+    color: rgba(1, 175, 255, 0.582);
+}
+.discountPrice {
+    font-size: 18px;
+}
+.accordion li {
+    list-style-type: disc;
+}
+.swiper-box img {
+    border-radius: 3%;
+}
+.swiper-button-next:after {
+    color: $coffee-color;
+}
+.swiper-button-prev:after {
+    color: $coffee-color;
+}
+.swiper-pagination-bullet-active {
+    background-color: $coffee-color;
+}
+.swiper-box {
+    position: relative;
+}
+.swiper-position {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: white;
+    background-color: $coffee-color;
+    border-radius: 5px;
+}
+.list li {
+    list-style: disc !important;
+}
+i {
+    padding: 0 0.3rem;
+}
+.order-box-item {
+    span {
+        font-size: 28px;
+        font-weight: bolder;
+        color: $coffee-color;
+    }
+}
+
+.input-item {
+    width: 40%;
+}
+.checkout-box {
+    background-color: rgb(187, 187, 187);
+}
+.step-list {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    text-align: center;
+    li {
+        @include pad() {
+            display: none;
+        }
+    }
+    .active {
+        display: flex;
+        flex-direction: column;
+    }
+}
+.step-btn {
+    margin: 10px 0;
+}
+.noProductImg {
+    background-size: cover;
+    background-position: center center;
+    height: 50vh;
+}
+.noProductOut {
+    text-align: center;
+    padding: 50px;
+}
+.noProductIn {
+    background-color: $gray-color;
+    padding: 30px 0;
+    border: double 3px white;
+    color: $coffee-color;
+    h5 , span {
+        font-size: 28px;
+    }
+}
+
+.description {
+    background-color: lightgray;
+    &:hover {
+        background-color: $coffee-color;
+        h6 {
+            color: white;
+        }
+    }
+}
+.description-btn {
+    background-color: lightgray;
+    padding: 12px 0;
+}
+.question-box {
+    min-height: 100%;
+    h3 {
+        color: $coffee-color;
+    }
+}
+.page-item.active .page-link {
+    background-color: $coffee-color !important;
+}
+.text-origin {
+    color: #7c7c7c;
+}
+.swal2-styled.swal2-confirm {
+    background-color: $coffee-color;
+}
+.scroll-icon-product {
+    position: fixed;
+    color: black;
+    font-size: 65px;
+    bottom: 100px;
+    right: 18px;
+    opacity: 0.5;
+    z-index: 999;
+    &:hover {
+        opacity: 1;
+        cursor: pointer;
+    }
+}
+.product-coupon-img {
+    display: block;
+    position: fixed;
+    width: 60px;
+    right: 21px;
+    bottom: 225px;
+    z-index: 99;
+    opacity: 0.7;
+    &:hover {
+        cursor: pointer;
+        opacity: 1;
+    }
+}
+.product-coupon-text {
+    position: fixed;
+    padding: 5px;
+    right: 11px;
+    bottom: 190px;
+    z-index: 999;
+    color: rgb(0, 0, 0);
+}
+@media (max-width: 992px) {
+    .card-item {
+        max-width: 100% !important ;
+        margin: 0 10px;
+    }
+    .swiper-position {
+        font-size: 12px;
+    }
+    .text-origin {
+        padding: 0 auto;
+    }
+}
+@include pad() {
+    .right-info {
+        padding-top: 25px;
+    }
+    .collapse-item {
+        text-align: center;
+    }
+}
+@include ipad() {
+    .step-btn {
+        width: 100%;
+    }
+    .sendbtn {
+        flex-direction: column;
+    }
+    .swiper-position {
+        font-size: 16px;
+    }
+}
+@include small-pad {
+    .left-list {
+        display: none;
+    }
+    .accordion-item {
+        display: flex !important;
+        flex-direction: column;
+    }
+    .product-img {
+        border: 1px solid gray;
+    }
+    .card-middle-item {
+        border-left: 1px solid gray;
+        border-right: 1px solid gray;
+    }
+    .card-display-com {
+        display: none !important;
+    }
+    .card-display {
+        display: block !important;
+    }
+    .phone-d-none {
+        display: none;
+    }
+    .input-item {
+        width: 50%;
+    }
+}
+@media (max-width: 525px) {
+    .input-item {
+        width: 55%;
+    }
+}
+@media (max-width: 485px) {
+    .input-item {
+        width: 65%;
+    }
+    .noProductIn {
+        h5, span {
+            font-size: 18px;
+        }
+    }
+}
+@media (max-width: 425px) {
+    .input-item {
+        width: 75%;
+    }
+    .checkout-status {
+        font-size: 15px;
+    }
+}

@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css?family=Kaushan+Script&display=swap"); // font-family: 'Kaushan Script', cursive;
+@import url("https://fonts.googleapis.com/css?family=Simonetta&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap"); // font-family: 'Noto Sans TC', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap"); // font-family: 'Lobster', cursive;
+
+@mixin background-cover {
+  background-size: cover;
+  background-position: center center;
+  height: 70vh;
+}
+
+@mixin pad {
+  @media (max-width: 991px) {
+    @content;
+  }
+}
+
+@mixin ipad {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin small-pad {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media (max-width: 375px) {
+    @content;
+  }
+}
+
+$coffee-color: #835050;
+$gray-color: rgba(230, 223, 215, 0.8);
+$sky-color: #007bff;
+
+html, body {
+  font-family: "Noto Sans TC", sans-serif;
+  background-color: rgb(255, 247, 239);
+  height: 100%;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.text-bold {
+  font-weight: bolder;
+}
+
+.bt-0 {
+  border-top: 0 !important;
+}
+
+.text-28 {
+  font-size: 28px;
+}
