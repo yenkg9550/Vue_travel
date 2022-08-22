@@ -376,7 +376,7 @@ export default {
   },
   mounted() {
     const vm = this;
-    vm.countDownDate = new Date('Dec 1 2020 00:00:00').getTime();
+    vm.countDownDate = new Date('Apr 1 2023 00:00:00').getTime();
     setInterval(() => {
       const now = new Date().getTime();
       vm.distance = vm.countDownDate - now;

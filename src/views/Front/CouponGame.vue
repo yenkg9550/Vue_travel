@@ -146,7 +146,7 @@ export default {
         }
       }
     },
-    // 代入deg角度、n亂數
+    // 代入 deg 角度、n亂數
     roateTurntable(deg, n) {
       const vm = this;
       const d = Number(deg) + 1440;
