@@ -16,26 +16,40 @@
         </ol>
       </nav>
       <div class="accordion accordion-item" id="accordionExample">
-        <div class="card text-center">
+        <div
+          class="card text-center"
+          data-toggle="collapse"
+          data-target="#collapseOne"
+          aria-expanded="false"
+          @click="collapseStep = !collapseStep"
+        >
           <div class="card-header" id="headingOne">
             <h2 class="mb-0">
-              <button class="btn btn-link collapsed" type="button"
-              data-toggle="collapse" data-target="#collapseOne"
-              aria-expanded="false" v-if="collapseStep" @click="collapseStep = false">
-                <span class="text-coffee">開啟選單</span>
-              </button>
-              <button class="btn btn-link collapsed" type="button"
-              data-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
-              v-else @click="collapseStep = true">
-                <span class="text-coffee">關閉選單</span>
+              <button
+                class="btn btn-link collapsed"
+                type="button"
+                data-toggle="collapse"
+                data-target="#collapseOne"
+                aria-expanded="false"
+                @click="collapseStep = !collapseStep"
+              >
+                <span class="text-coffee">{{ collapseStep ? "開啟選單" : "關閉選單" }}</span>
               </button>
             </h2>
           </div>
-          <div id="collapseOne" class="collapse"
-          aria-labelledby="headingOne" data-parent="#accordionExample">
-            <div class="list-group-item list-group-item-action views text-bold"
-            v-for="(item, index) in local.list" :key="index" :class="{ active: select == item }"
-            @click.prevent="getLocal(item)">
+          <div
+            id="collapseOne"
+            class="collapse"
+            aria-labelledby="headingOne"
+            data-parent="#accordionExample"
+          >
+            <div
+              class="list-group-item list-group-item-action views text-bold"
+              v-for="(item, index) in local.list"
+              :key="index"
+              :class="{ active: select == item }"
+              @click.prevent="getLocal(item)"
+            >
               {{ item }}
             </div>
           </div>
@@ -44,27 +58,42 @@
       <div class="row list">
         <div class="col-md-3 col-lg-2 col-sm-12 left-list">
           <ul class="list-group mt-3 sticky-top">
-            <li class="list-group-item list-group-item-action views text-bold"
-            v-for="(item, index) in local.list" :key="index"
-            :class="{ 'text-white active': select == item }" @click.prevent="getLocal(item)">
+            <li
+              class="list-group-item list-group-item-action views text-bold"
+              v-for="(item, index) in local.list"
+              :key="index"
+              :class="{ 'text-white active': select == item }"
+              @click.prevent="getLocal(item)"
+            >
               {{ item }}
             </li>
           </ul>
         </div>
         <div class="col-md-9 col-lg-10 col-sm-12">
           <div class="row">
-            <div class="mt-3 product-box col-md-6 col-lg-4 col-sm-12"
-            v-for="item in products" :key="item.id">
+            <div
+              class="mt-3 product-box col-md-6 col-lg-4 col-sm-12"
+              v-for="item in products"
+              :key="item.id"
+            >
               <div class="card card-item">
-                <div class="product-img"
-                :style="{ backgroundImage: `url(${item.imageUrl}` }"
-                @click="goProduct(item.id)"></div>
-                <i class="far fa-heart fa-item"
-                @click="addFavorite(item, item.id)"
-                v-if="!checkFavStatus(item)" style="font-size: 25px;"></i>
-                <i class="fas fa-heart fa-item"
-                @click="addFavorite(item, item.id)"
-                v-if="checkFavStatus(item)" style="font-size: 25px;">
+                <div
+                  class="product-img"
+                  :style="{ backgroundImage: `url(${item.imageUrl}` }"
+                  @click="goProduct(item.id)"
+                ></div>
+                <i
+                  class="far fa-heart fa-item"
+                  @click="addFavorite(item, item.id)"
+                  v-if="!checkFavStatus(item)"
+                  style="font-size: 25px;"
+                ></i>
+                <i
+                  class="fas fa-heart fa-item"
+                  @click="addFavorite(item, item.id)"
+                  v-if="checkFavStatus(item)"
+                  style="font-size: 25px;"
+                >
                 </i>
                 <div class="card-body card-middle-item pb-1 bg-light" @click="goProduct(item.id)">
                   <span class="badge badge-coffee float-right ml-2" style="font-size: 15px;"
@@ -80,33 +109,40 @@
                     <div class="product-text" v-if="item.price">{{ item.price | currency }} 元</div>
                   </div>
                 </div>
-                <div class="card-footer d-flex product-card text-center bg-coffee
-                text-white card-display-com">
+                <div
+                  class="card-footer d-flex product-card text-center bg-coffee text-white card-display-com"
+                >
                   <a class="col-md-5 p-0 more-border" @click="goProduct(item.id)">查看更多</a>
-                  <select class="product-select form-control col-md-2 p-0 ml-2"
-                    v-model="item.numItem">
+                  <select
+                    class="product-select form-control col-md-2 p-0 ml-2"
+                    v-model="item.numItem"
+                  >
                     <option :value="num" v-for="num in 9" :key="num">
                       {{ num }}
                     </option>
                   </select>
-                  <a class="col-md-5 p-0 text-hex-green" @click="addtoCart(item.id, item.numItem)">加入購物車</a>
+                  <a class="col-md-5 p-0" style="opacity: 1;" @click="addtoCart(item.id, item.numItem)"
+                    >加入購物車</a
+                  >
                 </div>
-                <div class="card-footer card-display d-none bg-coffee"
-                style="border: gray 1px solid;">
-                    <div class="col-12 text-center">
-                      <a class="text-white" @click="goProduct(item.id)">查看更多</a>
-                    </div>
-                </div>
-                <div class="card-footer card-display d-none bg-heavy-gray text-white"
-                style="border: gray 1px solid;">
+                <!-- <div
+                  class="card-footer card-display d-none bg-coffee"
+                  style="border: gray 1px solid;"
+                >
                   <div class="col-12 text-center">
-                    <select class="product-select form-control p-0 d-inline"
-                    v-model="item.numItem">
+                    <a class="text-white" @click="goProduct(item.id)">查看更多</a>
+                  </div>
+                </div> -->
+                <div
+                  class="card-footer card-display d-none bg-coffee text-white"
+                >
+                  <div class="col-12 text-center">
+                    <select class="product-select form-control p-0 d-inline" v-model="item.numItem">
                       <option :value="num" v-for="num in 9" :key="num">
                         {{ num }}
                       </option>
                     </select>
-                      <a @click="addtoCart(item.id, item.numItem)">加入購物車</a>
+                    <a @click="addtoCart(item.id, item.numItem)" style="margin-left: 20px;">加入購物車</a>
                   </div>
                 </div>
                 <div class="card-footer soldout" v-if="item.is_enabled == 0">
@@ -206,6 +242,9 @@ export default {
     },
     addtoCart(id, qty) {
       this.$bus.$emit('addSameCart', id, qty);
+      setTimeout(() => {
+        this.$bus.$emit('message:push', '已成功加入', 'success');
+      }, 1000);
     },
     addFavorite(item, id) {
       const vm = this;

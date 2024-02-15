@@ -25,14 +25,12 @@
           <li>
             <router-link class="nav-color nav-link text-bold hvr-bob" to="/coupon">優惠卷</router-link>
           </li>
+          <li>
+            <router-link class="nav-color nav-link text-bold hvr-bob dispaly-user-flex" style="justify-content: center;" to="/login">前往後台</router-link>
+          </li>
         </ul>
         <div class="nav-content navbar-collapse">
           <ul class="ml-auto navbar-nav">
-            <li class="d-flex justify-content-center dispaly-user-flex">
-              <button class="btn" @click.prevent="goAdmin()">
-                <i class="fas fa-user nav-icon"></i>
-              </button>
-            </li>
             <li class="d-flex justify-content-end">
               <button class="btn display-user-none" @click.prevent="goAdmin()">
                 <i class="fas fa-user nav-icon"></i>
@@ -58,10 +56,9 @@
                   <tbody>
                     <tr class="text-center" v-for="item in favList" :key="item">
                       <td class="pt-3" style="width: 80%;" v-if="isFavShow">
-                        <a href="#"
-                        @click.prevent="seeMore(item)">
-                        {{ item }}
-                        </a>
+                        <h5 href="#"
+                        style="color: #835050; cursor: pointer; font-size: 16px; margin-bottom: 0px;"
+                        @click.prevent="seeMore(item)">{{ item }}</h5>
                       </td>
                       <td style="width: 10%;">
                         <button class="btn p-0" @click.prevent="addFavCart(item)">
@@ -115,7 +112,7 @@
                   </thead>
                   <tbody>
                     <tr v-for="(item, index) in cart.carts" :key="index">
-                      <td class="align-middle bt-0">
+                      <td class="align-middle bt-0" style="color: #835050;">
                         {{ item.product.title }}
                       </td>
                       <td class="align-middle bt-0">

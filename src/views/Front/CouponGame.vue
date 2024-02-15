@@ -95,7 +95,7 @@ export default {
         {
           // n = 1
           couponId: 5,
-          name: '最大獎：免費',
+          name: '最大獎：一折',
           coupon_code: 'longManGi',
         },
       ],

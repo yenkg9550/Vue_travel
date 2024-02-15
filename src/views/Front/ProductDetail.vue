@@ -355,6 +355,9 @@ export default {
         return;
       }
       this.$bus.$emit('updateSameCart', id, qty);
+      setTimeout(() => {
+        this.$bus.$emit('message:push', '已成功加入', 'success');
+      }, 1000);
     },
     goCheck(id, qty) {
       if (qty === 0) {
@@ -367,6 +370,44 @@ export default {
         this.$bus.$emit('updateStep');
       }, 1000);
     },
+    goCoupon() {
+      this.$router.push('/coupon');
+    },
+    calculateCountDown() {
+      const now = new Date().getTime();
+      this.distance = this.countDownDate - now;
+      this.days = Math.floor(this.distance / (1000 * 60 * 60 * 24));
+      this.hours = Math.floor((this.distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      this.minutes = Math.floor((this.distance % (1000 * 60 * 60)) / (1000 * 60));
+      this.seconds = Math.floor((this.distance % (1000 * 60)) / 1000);
+    },
+    initializeCountDown() {
+      const currentDate = new Date();
+      const currentMonth = currentDate.getMonth();
+      const currentYear = currentDate.getFullYear();
+
+      // Assuming initial count down date is the first day of next month
+      const countDownMonth = currentMonth === 11 ? 0 : currentMonth + 1;
+      const countDownYear = currentMonth === 11 ? currentYear + 1 : currentYear;
+
+      // Set the count down date to the first day of next month
+      this.countDownDate = new Date(countDownYear, countDownMonth, 1, 0, 0, 0).getTime();
+    },
+    updateCountDownIfNeeded() {
+      const currentDate = new Date();
+      const currentMonth = currentDate.getMonth();
+      const currentYear = currentDate.getFullYear();
+      const currentDay = currentDate.getDate();
+
+      // If it's a new month, reset count down to 35 days
+      if (currentDay === 1) {
+        const countDownMonth = currentMonth === 11 ? 0 : currentMonth + 1;
+        const countDownYear = currentMonth === 11 ? currentYear + 1 : currentYear;
+
+        // Set the count down date to the first day of next month
+        this.countDownDate = new Date(countDownYear, countDownMonth, 1, 0, 0, 0).getTime();
+      }
+    },
   },
   created() {
     const vm = this;
@@ -375,20 +416,12 @@ export default {
     vm.getProducts();
   },
   mounted() {
-    const vm = this;
-    vm.countDownDate = new Date('Apr 1 2023 00:00:00').getTime();
+    this.initializeCountDown();
+    this.calculateCountDown();
+
     setInterval(() => {
-      const now = new Date().getTime();
-      vm.distance = vm.countDownDate - now;
-      vm.days = Math.floor(vm.distance / (1000 * 60 * 60 * 24));
-      vm.hours = Math.floor((vm.distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      vm.minutes = Math.floor((vm.distance % (1000 * 60 * 60)) / (1000 * 60));
-      vm.seconds = Math.floor((vm.distance % (1000 * 60)) / 1000);
-      if (vm.distance < 0) {
-        if (vm.distance < 1000 * 60 * 60 * 24) {
-          vm.countDownDate += 1000 * 60 * 60 * 24 * 1 * 365;
-        }
-      }
+      this.calculateCountDown();
+      this.updateCountDownIfNeeded();
     }, 1000);
   },
   destroyed() {

@@ -14,7 +14,7 @@
       <div class="bg-cover" style="background-image:url(https://i.imgur.com/FbBDis9.jpg)">
         <div class="carousel-box2 text-right">
           <h3 class="text-coffee text-bold">限時免費</h3>
-            <span class="d-block">最大獎真的不用錢</span>
+            <span class="d-block">最大獎真的只要一折</span>
               <button class="btn btn-coffee hvr-grow" @click.prevent="goProduct()">搶購去</button>
         </div>
       </div>
